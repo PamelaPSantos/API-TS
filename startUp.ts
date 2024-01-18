@@ -4,7 +4,7 @@ import newController from "./controller/newController";
 
 class startUp {
   public app: Application
-  private _db: database = new database
+  private _db: database = new database()
 
   constructor() {
     this.app = express()
@@ -13,12 +13,12 @@ class startUp {
   }
   routes() {
     this.app.route("/").get((req, res) => {
-      res.send({versao: "0.0.1"})
+      res.send({ versao: "0.0.1" })
     })
-    this.app.route("/api/v1/new/:page/:qtd").get((req: Request, res: Response) => {
+    this.app.route("/api/v1/news/:page/:qtd").get((req: Request, res: Response) => {
       return newController.get(req, res)
     })
-    this.app.route("/api/v1/new/:id").get((req: Request, res: Response) => {
+    this.app.route("/api/v1/news/:id").get((req: Request, res: Response) => {
       return newController.getById(req, res)
     })
   }
