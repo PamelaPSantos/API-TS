@@ -1,15 +1,17 @@
 import mongoose from "mongoose";
-import { Fotos } from "../models/fotos";
-import { Galeria } from "../models/galeria";
+import { Video } from "../models/videos";
 
 
-const GaleriaSchema = new mongoose.Schema<Galeria>({
+const VideoSchema = new mongoose.Schema<Video>({
  titulo: {String},
  texto: {String},
+ imagem: {String},
+ duracao: {String},
+ link: {String},
+ url: {String},
  dataPublicacao: {Date},
- fotos: [Array<Fotos>],
  ativo: {Boolean}
 })
 
 
-export const GaleriaRepository = mongoose.model<Galeria>("galeria", GaleriaSchema)
+export const videosRepository = mongoose.model<Video>("videos", VideoSchema)
