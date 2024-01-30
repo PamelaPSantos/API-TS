@@ -1,6 +1,6 @@
-import { Result } from "../infra/result" 
+import { New } from "../models/new"
+import { IService } from "./iService"
 
-export interface INewService {
-  get(id: string)
-  getAll(page: number, qtd: number): Promise<Result>
+export interface INewService extends IService<New> {
+  
 }
