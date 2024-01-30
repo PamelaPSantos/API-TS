@@ -3,7 +3,7 @@ import { Result } from "../infra/result";
 import { GaleriaRepository } from "../repository/galeriaRepository";
 import { Galeria } from "../models/galeria";
 
-export class VideoService implements IGaleriaService {
+export class GaleriaService implements IGaleriaService {
 
   async get (_id: string): Promise<Galeria> {
     let result = await GaleriaRepository.findById(_id)
