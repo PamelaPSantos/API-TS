@@ -1,11 +1,12 @@
+import { injectable ,inject } from "tsyringe";
+import { IVideoService } from "../services/iVideoService";
 import { Request ,Response } from "express";
 import { VideoService } from "../services/videoService";
 
-class videoController {
-  private _service: VideoService
-  constructor () {
-    this._service = new VideoService()
-  }
+@injectable()
+export class VideoController {
+
+  constructor (@inject('IVideoService')private _service: IVideoService) {}
   async get(request: Request, response: Response){
     try {
       const page = request.params.page ? parseInt(request.params.page): 1
@@ -26,5 +27,3 @@ class videoController {
     }
   }
 }
-
-export default new videoController()
