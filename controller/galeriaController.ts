@@ -1,11 +1,11 @@
+import { injectable ,inject } from "tsyringe";
+import { IGaleriaService } from "../services/iGaleriaService";
 import { Request ,Response } from "express";
 import { GaleriaService } from "../services/galeriaService";
 
-class galeriaController {
-  private _service: GaleriaService
-  constructor () {
-    this._service = new GaleriaService()
-  }
+@injectable()
+export class GaleriaController {
+  constructor (@inject('IGaleriaService')private _service: IGaleriaService) {}
   async get(request: Request, response: Response){
     try {
       const page = request.params.page ? parseInt(request.params.page): 1
@@ -26,5 +26,3 @@ class galeriaController {
     }
   }
 }
-
-export default new galeriaController()

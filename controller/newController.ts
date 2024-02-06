@@ -1,11 +1,12 @@
+import { injectable ,inject } from "tsyringe";
+import { INewService } from "../contracts/iNewService";
 import { NewService } from "../services/INewService";
 import { Request, Response } from "express";
 
-class NewController {
-  private _service: NewService
-  constructor () {
-    this._service = new NewService()
-  }
+@injectable()
+export class NewController {
+
+  constructor (@inject('INewService')private _service: INewService) {}
   async get(request: Request, response: Response){
     try {
       const page = request.params.page ? parseInt(request.params.page): 1
@@ -26,4 +27,3 @@ class NewController {
     }
   }
 }
-export default new NewController()
